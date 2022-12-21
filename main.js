@@ -33,7 +33,7 @@ perspectiveCamera.position.z = 2;
 scene.add(perspectiveCamera);
 
 // Controls
-const controls = new THREE.OrbitControls(camera, canvas);
+const controls = new OrbitControls(camera, canvas);
 controls.enableDamping = true;
 
 // Renderer
@@ -42,3 +42,20 @@ const renderer = new THREE.WebGLRenderer({
 });
 renderer.setSize(sizes.width, sizes.height);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+// Animate
+const clock = new THREE.Clock();
+
+const loop = () => {
+  const elapsedTime = clock.getElapsedTime();
+
+  // Update controls
+  controls.update();
+
+  // Render
+  renderer.render(scene, camera);
+
+  // Call loop
+  window.requestAnimationFrame(loop);
+};
+loop();
