@@ -18,3 +18,15 @@ window.addEventListener("resize", () => {
   sizes.width = window.innerWidth;
   sizes.height = window.innerHeight;
 });
+
+// Camera
+const perspectiveCamera = new THREE.PerspectiveCamera(
+  50,
+  sizes.width / sizes.height,
+  0.1,
+  100
+);
+perspectiveCamera.position.x = 1;
+perspectiveCamera.position.y = 1;
+perspectiveCamera.position.z = 2;
+scene.add(perspectiveCamera);
