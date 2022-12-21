@@ -3,12 +3,37 @@ import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { FontLoader } from "three/examples/jsm/loaders/FontLoader.js";
 import { TextGeometry } from "three/examples/jsm/geometries/TextGeometry.js";
+import typefaceFont from "three/examples/fonts/helvetiker_regular.typeface.json";
 
 // Canvas
 const canvas = document.querySelector(".webgl");
 
 // Scene
 const scene = new THREE.Scene();
+
+// Fonts
+const fontLoader = new FontLoader();
+fontLoader.load("/static/fonts/helvetiker_regular.typeface.json", (font) => {
+  // Material
+  const material = new THREE.MeshBasicMaterial();
+
+  // Text
+  const textGeometry = new TextGeometry("JOHN", {
+    font: font,
+    size: 0.5,
+    height: 0.2,
+    curveSegments: 12,
+    bevelEnabled: true,
+    bevelThickness: 0.03,
+    bevelSize: 0.02,
+    bevelOffset: 0,
+    bevelSegments: 5,
+  });
+  textGeometry.center();
+
+  const text = new THREE.Mesh(textGeometry, material);
+  scene.add(text);
+});
 
 // Sizes
 const sizes = {
