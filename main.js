@@ -35,7 +35,7 @@ perspectiveCamera.position.z = 2;
 scene.add(perspectiveCamera);
 
 // Controls
-const controls = new OrbitControls(camera, canvas);
+const controls = new OrbitControls(perspectiveCamera, canvas);
 controls.enableDamping = true;
 
 // Renderer
@@ -55,7 +55,7 @@ const loop = () => {
   controls.update();
 
   // Render
-  renderer.render(scene, camera);
+  renderer.render(scene, perspectiveCamera);
 
   // Call loop
   window.requestAnimationFrame(loop);
