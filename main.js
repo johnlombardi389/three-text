@@ -3,7 +3,6 @@ import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { FontLoader } from "three/examples/jsm/loaders/FontLoader.js";
 import { TextGeometry } from "three/examples/jsm/geometries/TextGeometry.js";
-import typefaceFont from "three/examples/fonts/helvetiker_regular.typeface.json";
 
 // Canvas
 const canvas = document.querySelector(".webgl");
@@ -15,19 +14,19 @@ const scene = new THREE.Scene();
 const fontLoader = new FontLoader();
 fontLoader.load("/static/fonts/helvetiker_regular.typeface.json", (font) => {
   // Material
-  const material = new THREE.MeshBasicMaterial();
+  const material = new THREE.MeshBasicMaterial({ wireframe: true });
 
   // Text
   const textGeometry = new TextGeometry("JOHN", {
     font: font,
     size: 0.5,
     height: 0.2,
-    curveSegments: 12,
+    curveSegments: 7,
     bevelEnabled: true,
     bevelThickness: 0.03,
     bevelSize: 0.02,
     bevelOffset: 0,
-    bevelSegments: 5,
+    bevelSegments: 4,
   });
   textGeometry.center();
 
