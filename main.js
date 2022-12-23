@@ -22,16 +22,16 @@ fontLoader.load("/static/fonts/helvetiker_regular.typeface.json", (font) => {
   const material = new THREE.MeshMatcapMaterial({ matcap: mcTexture });
 
   // Text
-  const textGeometry = new TextGeometry("JOHN", {
+  const textGeometry = new TextGeometry("Hello", {
     font: font,
     size: 0.5,
     height: 0.15,
-    curveSegments: 9,
+    curveSegments: 10,
     bevelEnabled: true,
     bevelThickness: 0.03,
     bevelSize: 0.02,
     bevelOffset: 0,
-    bevelSegments: 6,
+    bevelSegments: 8,
   });
   textGeometry.center();
 
