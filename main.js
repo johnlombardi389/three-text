@@ -10,23 +10,28 @@ const canvas = document.querySelector(".webgl");
 // Scene
 const scene = new THREE.Scene();
 
+// Texture
+const mcTexture = new THREE.TextureLoader().load(
+  "static/textures/mcTexture1.png"
+);
+
 // Fonts
 const fontLoader = new FontLoader();
 fontLoader.load("/static/fonts/helvetiker_regular.typeface.json", (font) => {
   // Material
-  const material = new THREE.MeshBasicMaterial({ wireframe: true });
+  const material = new THREE.MeshMatcapMaterial({ matcap: mcTexture });
 
   // Text
   const textGeometry = new TextGeometry("JOHN", {
     font: font,
     size: 0.5,
-    height: 0.2,
-    curveSegments: 7,
+    height: 0.15,
+    curveSegments: 9,
     bevelEnabled: true,
     bevelThickness: 0.03,
     bevelSize: 0.02,
     bevelOffset: 0,
-    bevelSegments: 4,
+    bevelSegments: 6,
   });
   textGeometry.center();
 
