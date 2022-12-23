@@ -3,6 +3,7 @@ import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { FontLoader } from "three/examples/jsm/loaders/FontLoader.js";
 import { TextGeometry } from "three/examples/jsm/geometries/TextGeometry.js";
+import { SphereGeometry } from "three";
 
 // Canvas
 const canvas = document.querySelector(".webgl");
@@ -37,6 +38,12 @@ fontLoader.load("/static/fonts/helvetiker_regular.typeface.json", (font) => {
 
   const text = new THREE.Mesh(textGeometry, material);
   scene.add(text);
+
+  // Plane
+  const plane = new THREE.Mesh(new THREE.PlaneBufferGeometry(5, 5), material);
+  plane.rotation.x = -Math.PI * 0.5;
+  plane.position.y = -0.4;
+  scene.add(plane);
 });
 
 // Sizes
